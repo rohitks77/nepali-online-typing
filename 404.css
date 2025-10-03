@@ -1,0 +1,353 @@
+/* colors */
+:root {
+    --blue: #293b49;
+    --pink: #fdabaf;
+    --pink-light: #ffe0e6;
+    --green: #04cba0;
+    --green-dark: #01ac88;
+    --white: white;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    font-size: 1.5rem;
+    color: var(--blue);
+}
+
+a {
+    text-decoration: none;
+}
+
+.center {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+}
+
+.error {
+    display: flex;
+    flex-direction: row;
+    align-items: center;  /* Ensures vertical alignment */
+}
+
+.number {
+    font-weight: 900;
+    font-size: 15rem;
+    line-height: 1;
+}
+
+.illustration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 12.2rem;
+    height: 15rem;  /* Ensure this height matches the .number font size */
+    position: relative;
+    margin: 0 2.1rem;
+}
+
+.circle {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 12.2rem;
+    height: 11.4rem;
+    border-radius: 50%;
+    background-color: var(--blue);
+}
+
+.clip {
+    position: absolute;
+    bottom: 0.3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+    width: 12.5rem;
+    height: 13rem;
+    border-radius: 0 0 50% 50%;
+}
+
+.paper {
+    position: absolute;
+    bottom: -0.3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 9.2rem;
+    height: 12.4rem;
+    border: 0.3rem solid var(--blue);
+    background-color: var(--white);
+    border-radius: 0.8rem;
+}
+
+.paper::before {
+    content: "";
+    position: absolute;
+    top: -0.7rem;
+    right: -0.7rem;
+    width: 1.4rem;
+    height: 1rem;
+    background-color: var(--white);
+    border-bottom: 0.3rem solid var(--blue);
+    transform: rotate(45deg);
+}
+
+.face {
+    position: relative;
+    margin-top: 2.3rem;
+}
+
+.eyes {
+    position: absolute;
+    top: 0;
+    left: 2.4rem;
+    width: 4.6rem;
+    height: 0.8rem;
+}
+
+.eye {
+    position: absolute;
+    bottom: 0;
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    background-color: var(--blue);
+    animation-name: eye;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+.eye-left {
+    left: 0;
+}
+
+.eye-right {
+    right: 0;
+}
+
+@keyframes eye {
+    0%, 50%, 100% {
+        height: 0.8rem;
+    }
+    52% {
+        height: 0.1rem;
+    }
+    54% {
+        height: 0.8rem;
+    }
+}
+
+.rosyCheeks {
+    position: absolute;
+    top: 1.6rem;
+    width: 1rem;
+    height: 0.2rem;
+    border-radius: 50%;
+    background-color: var(--pink);
+}
+
+.rosyCheeks-left {
+    left: 1.4rem;
+}
+
+.rosyCheeks-right {
+    right: 1.4rem;
+}
+
+.mouth {
+    position: absolute;
+    top: 3.1rem;
+    left: 50%;
+    width: 1.6rem;
+    height: 0.2rem;
+    border-radius: 0.1rem;
+    transform: translateX(-50%);
+    background-color: var(--blue);
+}
+
+.text {
+    margin-top: 5rem;
+    font-weight: 300;
+    color: var(--blue);
+}
+
+.button {
+    margin-top: 4rem;
+    padding: 1.2rem 3rem;
+    color: var(--white);
+    background-color: var(--green);
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: var(--green-dark);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .number {
+        font-size: 10rem;
+    }
+
+    .illustration {
+        width: 10rem;
+        height: 13rem;  /* Adjust height to match smaller font size */
+    }
+
+    .circle {
+        width: 10rem;
+        height: 9.4rem;
+    }
+
+    .clip {
+        width: 10.5rem;
+        height: 11rem;
+    }
+
+    .paper {
+        width: 8rem;
+        height: 10.8rem;
+    }
+
+    .paper::before {
+        width: 1.2rem;
+        height: 0.8rem;
+    }
+
+    .face {
+        margin-top: 2rem;
+    }
+
+    .eyes {
+        left: 2rem;
+        width: 4rem;
+        height: 0.7rem;
+    }
+
+    .eye {
+        width: 0.7rem;
+        height: 0.7rem;
+    }
+
+    .rosyCheeks {
+        top: 1.4rem;
+        width: 0.9rem;
+        height: 0.2rem;
+    }
+
+    .rosyCheeks-left {
+        left: 1.2rem;
+    }
+
+    .rosyCheeks-right {
+        right: 1.2rem;
+    }
+
+    .mouth {
+        top: 2.8rem;
+        width: 1.4rem;
+        height: 0.2rem;
+    }
+
+    .text {
+        margin-top: 4rem;
+        font-size: 1.4rem;
+    }
+
+    .button {
+        margin-top: 3rem;
+        padding: 1rem 2.5rem;
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .number {
+        font-size: 8rem;
+    }
+
+    .illustration {
+        width: 8rem;
+        height: 10rem;  /* Adjust height to match smaller font size */
+    }
+
+    .circle {
+        width: 8rem;
+        height: 7.4rem;
+    }
+
+    .clip {
+        width: 8.5rem;
+        height: 9rem;
+    }
+
+    .paper {
+        width: 6.4rem;
+        height: 8.6rem;
+    }
+
+    .paper::before {
+        width: 1rem;
+        height: 0.6rem;
+    }
+
+    .face {
+        margin-top: 1.5rem;
+    }
+
+    .eyes {
+        left: 1.6rem;
+        width: 3.2rem;
+        height: 0.6rem;
+    }
+
+    .eye {
+        width: 0.6rem;
+        height: 0.6rem;
+    }
+
+    .rosyCheeks {
+        top: 1.2rem;
+        width: 0.8rem;
+        height: 0.2rem;
+    }
+
+    .rosyCheeks-left {
+        left: 1rem;
+    }
+
+    .rosyCheeks-right {
+        right: 1rem;
+    }
+
+    .mouth {
+        top: 2.4rem;
+        width: 1.2rem;
+        height: 0.2rem;
+    }
+
+    .text {
+        margin-top: 3rem;
+        font-size: 1.2rem;
+    }
+
+    .button {
+        margin-top: 2rem;
+        padding: 0.8rem 2rem;
+        font-size: 1.2rem;
+    }
+}
