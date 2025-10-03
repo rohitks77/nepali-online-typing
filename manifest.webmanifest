@@ -1,0 +1,14 @@
+{
+  "name": "Nepali Romanized Typing",
+  "short_name": "Nepali Typing",
+  "description": "Type Romanized Nepali and get instant Unicode output with practice tools.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1769ff",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
+

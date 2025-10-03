@@ -1,0 +1,97 @@
+:root{--bg:#ffffff;--panel:#f4f7fb;--text:#0b1020;--muted:#5b6b7e;--acc:#1769ff;--border:#d7e0ea}
+*{box-sizing:border-box}
+html{overflow-y:scroll}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial;scrollbar-gutter:stable}
+/* Subtle decorative background while keeping light mode */
+body::before,body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none}
+/* Soft corner gradients */
+body::before{background:
+  radial-gradient(600px 300px at -10% -10%, rgba(23,105,255,.12), transparent 60%),
+  radial-gradient(500px 260px at 110% 110%, rgba(0,194,255,.12), transparent 60%);
+}
+/* Gentle dot grid */
+body::after{background-image:
+  radial-gradient(circle at 1px 1px, rgba(10,30,60,.06) 1px, transparent 0);
+background-size:18px 18px;opacity:.4;}
+.container{max-width:900px;margin:48px auto;padding:0 16px}
+h1{margin:0 0 8px 0;font-size:28px}
+h1 .icon-btn{margin-left:8px;vertical-align:middle}
+.sub{margin:0 0 16px 0;color:var(--muted)}
+.toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 16px 0}
+.toolbar .spacer{flex:1}
+.seg{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:6px;display:flex;gap:6px}
+.seg button{background:#eef3fb;border:1px solid var(--border);padding:8px 14px;border-radius:8px;color:var(--text);cursor:pointer;line-height:1}
+.seg button.active{background:#e8eef7}
+.input-wrap{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px;margin-top:12px}
+.input-wrap + .input-wrap{margin-top:16px}
+.input{width:100%;min-height:140px;background:#fff;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:12px 14px;resize:none}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:12px}
+.stats{margin-left:auto;color:var(--muted);font-size:13px;display:flex;gap:10px;align-items:center}
+.btn{background:var(--acc);color:#fff;border:0;padding:8px 14px;border-radius:8px;cursor:pointer}
+.btn.secondary{background:#eef3fb;color:#0b1020;border:1px solid var(--border)}
+.hint{color:var(--muted);font-size:13px;margin-left:auto}
+.kb-wrap{margin-top:20px;text-align:center}
+.kb-img{max-width:100%;height:auto;border:1px solid var(--border);border-radius:8px}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);backdrop-filter:blur(2px);z-index:1000}
+.modal{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(1);background:#fff;border:1px solid var(--border);border-radius:18px;min-width:340px;max-width:620px;box-shadow:0 28px 100px rgba(15,40,90,.30), 0 6px 18px rgba(15,40,90,.18);overflow:hidden;z-index:1001}
+.modal::before{content:"";position:absolute;inset:0;border-radius:16px;background:linear-gradient(135deg,rgba(23,105,255,.08),rgba(0,194,255,.06));pointer-events:none}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--border);background:linear-gradient(90deg,#f5f9ff,#ffffff);cursor:move}
+.modal-header .btn{cursor:default}
+.modal-body{padding:18px 20px 22px;color:#102030}
+.modal-body ol{padding-left:20px}
+.modal-body li{margin:6px 0}
+.modal-tip{margin-top:10px;padding:10px 12px;background:#f6fbff;border:1px solid #d9ebff;border-radius:10px;color:#0a294d}
+.badge{display:inline-flex;align-items:center;gap:6px;background:#eef6ff;border:1px solid #d9ebff;color:#0a294d;padding:4px 8px;border-radius:999px;font-size:12px}
+.modal-enter{animation:modalIn .18s ease-out}
+@keyframes modalIn{from{opacity:0;transform:translate(-50%,-46%) scale(.98)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+.icon-btn{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:6px;border:1px solid var(--border);background:#fff;box-shadow:0 1px 0 rgba(0,0,0,.03);cursor:pointer;vertical-align:middle}
+.icon-btn[data-variant="info"]:hover{box-shadow:0 2px 8px rgba(0,0,0,.08)}
+
+/* Tighter reference header spacing */
+#ref-panel label.sub{display:flex;align-items:center;gap:8px;margin-top:-4px;margin-bottom:6px}
+
+/* Toast */
+.toast{position:fixed;right:16px;bottom:16px;background:#0b1020;color:#fff;padding:10px 14px;border-radius:10px;font-size:14px;box-shadow:0 8px 24px rgba(0,0,0,.18);opacity:0;transform:translateY(10px);transition:opacity .2s ease, transform .2s ease;z-index:1000}
+.toast.show{opacity:1;transform:translateY(0)}
+
+/* Footer */
+.site-footer{margin-top:36px;border-top:1px solid var(--border);background:var(--bg)}
+.footer-inner{max-width:900px;margin:0 auto;padding:14px 16px;display:flex;align-items:center;gap:10px;color:var(--muted)}
+.credit-link{color:#1769ff;text-decoration:none}
+.credit-link:hover{text-decoration:underline}
+.spark{flex:1;height:2px;background:linear-gradient(90deg,rgba(23,105,255,.3),rgba(0,194,255,.15),transparent)}
+
+/* Install banner */
+.install-banner{position:fixed;right:16px;bottom:16px;background:#f6fbff;border:1px solid #d9ebff;color:#0a294d;border-radius:12px;padding:10px 12px;display:flex;align-items:center;gap:10px;box-shadow:0 12px 28px rgba(15,40,90,.18), 0 6px 16px rgba(15,40,90,.12);z-index:999;flex-wrap:nowrap;max-width:640px}
+.install-banner .msg{max-width:360px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.install-banner .actions{margin:0;display:flex;gap:8px}
+.install-close{background:transparent;border:0;color:#0a294d;cursor:pointer;font-size:16px;line-height:1;padding:4px;border-radius:6px}
+.install-close:hover{background:#eaf4ff}
+
+@media (max-width: 640px){
+  .install-banner{left:8px;right:8px;bottom:8px;max-width:none;width:auto;flex-wrap:nowrap;gap:8px}
+  .install-banner .msg{max-width:58vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .install-banner .actions{margin-left:auto}
+  .install-banner .btn{padding:6px 10px}
+  #install-info{display:none}
+}
+
+@media (max-width: 380px){
+  /* On very narrow screens, hide secondary action to keep single line */
+  .install-banner .msg{max-width:62vw}
+}
+
+/* Global scrollbar styling */
+*{scrollbar-width:thin;scrollbar-color:#b8c6d8 transparent}
+/* WebKit */
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:var(--panel)}
+::-webkit-scrollbar-thumb{background:#b8c6d8;border-radius:10px;border:2px solid var(--panel)}
+::-webkit-scrollbar-thumb:hover{background:#9db1c9}
+
+/* Textareas on white background */
+.input::-webkit-scrollbar-track{background:#fff}
+.input::-webkit-scrollbar-thumb{border-color:#fff}
+
+
