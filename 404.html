@@ -1,36 +1,111 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 Error</title>
-    <link rel="stylesheet" href="404.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Page Not Found – Nepali Romanized Typing</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <meta name="robots" content="noindex">
 </head>
 <body>
-    <div class="center">
-        <div class="error">
-            <div class="number">4</div>
-            <div class="illustration">
-                <div class="circle"></div>
-                <div class="clip">
-                    <div class="paper">
-                        <div class="face">
-                            <div class="eyes">
-                                <div class="eye eye-left"></div>
-                                <div class="eye eye-right"></div>
-                            </div>
-                            <div class="rosyCheeks rosyCheeks-left"></div>
-                            <div class="rosyCheeks rosyCheeks-right"></div>
-                            <div class="mouth"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="number">4</div>
-        </div>
-        <div class="text">Oops. The page you're looking for doesn't exist.</div>
-        <a class="button" href="https://nepali-online-typing.meropractice.">Back Home</a>
+  <div class="container" style="text-align:center;margin-top:72px">
+    <style>
+      .four-oh-four{display:inline-flex;align-items:center;gap:18px;margin-bottom:8px}
+      .four-oh-four svg{filter:drop-shadow(0 10px 24px rgba(15,40,90,.18))}
+      .pulse{animation:pulseGlow 1.6s ease-in-out infinite}
+      @keyframes pulseGlow{0%{opacity:.9;transform:translateY(0)}50%{opacity:1;transform:translateY(-2px)}100%{opacity:.9;transform:translateY(0)}}
+      .hint-mini{color:#5b6b7e;font-size:13px;margin-top:6px}
+      .prank{display:inline-block;background:#0b1020;color:#9ee4ff;border:1px solid #0f2a55;border-radius:10px;padding:10px 12px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;box-shadow:0 12px 28px rgba(15,40,90,.18);margin-bottom:14px}
+      .prank .kbd{background:#142233;color:#d0e7ff;border:1px solid #26406f;border-radius:4px;padding:1px 6px;margin:0 2px}
+    </style>
+    <div id="prank" class="prank" aria-live="polite" aria-atomic="true">Initializing…</div>
+    <div id="reveal" style="opacity:0;transform:translateY(6px);transition:opacity .28s ease, transform .28s ease">
+    <div class="four-oh-four">
+      <svg class="pulse" width="120" height="64" viewBox="0 0 240 128" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="g404" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#1769ff"/>
+            <stop offset="100%" stop-color="#00c2ff"/>
+          </linearGradient>
+        </defs>
+        <text x="120" y="86" text-anchor="middle" font-size="84" font-weight="800" fill="url(#g404)" font-family="system-ui,-apple-system,Segoe UI,Roboto,Arial">404</text>
+      </svg>
     </div>
+    <h1 style="font-size:28px;margin-bottom:6px" id="h-title">Page Not Found</h1>
+    <p class="sub" style="margin-bottom:6px" id="h-sub">The page you’re looking for doesn’t exist or moved.</p>
+    <div class="hint-mini">Tip: Press Backspace or Alt+← to go back</div>
+    <div class="input-wrap" style="display:inline-block;max-width:640px;text-align:left">
+      <div class="actions" style="justify-content:center">
+        <button class="btn" type="button" title="Go back" onclick="if(document.referrer){history.back();}else{window.location.href='./index.html';}">Go Back</button>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <footer id="site-footer" class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <span class="credit">Made with ♥ for Nepali typing • Credit: <a href="https://rohitks.com.np/" target="_blank" rel="noopener" class="credit-link">@rohitks</a></span>
+      <span class="spark" aria-hidden="true"></span>
+    </div>
+  </footer>
+  <script>
+    (function(){
+      try{
+        document.addEventListener('keydown', function(e){
+          if (e.key === 'Backspace' || e.key === 'Escape' || (e.altKey && e.key === 'ArrowLeft')) {
+            e.preventDefault();
+            if (document.referrer) history.back(); else window.location.href='./index.html';
+          }
+        });
+        // playful intro: faux security alert, then reveal 404
+        const prank = document.getElementById('prank');
+        const title = document.getElementById('h-title');
+        const sub = document.getElementById('h-sub');
+        const reveal = document.getElementById('reveal');
+        const footer = document.getElementById('site-footer');
+        if (prank){
+          const steps = [
+            'SECURITY ALERT: Unusual activity detected…',
+            'Scanning session… 3 suspicious requests found',
+            'Attempting device access…',
+            'Negotiating handshake (AES-256)…',
+            'Elevating privileges…',
+            'Status: ACCESS GRANTED ✅',
+            'Verifying integrity… OK',
+            'Relax 🙂 This is a friendly prank.',
+            'Your device is safe and secure.',
+            'Explanation: You hit a missing page (404).'
+          ];
+          const durations = [1400, 1400, 1400, 1600, 1600, 2000, 1400, 1800, 1800, 2200];
+          let i = 0;
+          const tick = () => {
+            prank.textContent = steps[i];
+            i++;
+            if (i < steps.length){
+              const delay = durations[Math.min(i-1, durations.length-1)] || 1500;
+              setTimeout(tick, delay);
+            }
+            else {
+              // After reveal, tone down the prank panel
+              setTimeout(() => { prank.style.opacity = '0.88'; }, 600);
+              if (title) title.textContent = 'Page Not Found';
+              if (sub) sub.textContent = 'The page you’re looking for doesn’t exist or moved.';
+              if (reveal){ reveal.style.opacity = '1'; reveal.style.transform = 'none'; }
+              if (footer) footer.style.display = '';
+            }
+          };
+          if (footer) footer.style.display = 'none';
+          setTimeout(tick, 700);
+        } else {
+          if (reveal){ reveal.style.opacity = '1'; reveal.style.transform = 'none'; }
+          if (footer) footer.style.display = '';
+        }
+      }catch(_){ }
+    })();
+  </script>
 </body>
 </html>
+
 
